@@ -1,0 +1,43 @@
+﻿    <div class="container row">
+        <div class="col-md-6">
+            @using (Html.BeginForm("Index", "AES", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label>Key:</label>
+                    <input type="text" class="form-control" name="encryptionKey">
+                </div>
+                <div class="form-group">
+                    <label>Original Text:</label>
+                    <input type="text" class="form-control" name="clearText">
+                </div>
+                <div class="form-group">
+                    <label>Encrypted Text:</label>
+                    <input readonly type="text" class="form-control" value="@TempData["EncryptedText"]">
+                </div>
+                <input type="submit" class="btn btn-primary" name="submit" value="Encrypt" />
+            }
+
+        </div>
+        <div class="col-md-6">
+            @using (Html.BeginForm("Index", "AES", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label>Key:</label>
+                    <input type="text" class="form-control" name="encryptionKey">
+                </div>
+                <div class="form-group">
+                    <label>Encrypted Text:</label>
+                    <input type="text" class="form-control" name="cipherText">
+                </div>
+                <div class="form-group">
+                    <label>Decrypted Text:</label>
+                    <input readonly type="text" class="form-control" value="@TempData["DecryptedText"]">
+                </div>
+                <input type="submit" class="btn btn-primary" name="submit" value="Decrypt" />
+            }
+
+        </div>
+    </div>
+@{
+    TempData.Keep("EncryptedText");
+}
